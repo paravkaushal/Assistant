@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActivityCompat.requestPermissions(MainActivity.this , new String[] {Manifest.permission.RECORD_AUDIO}, 121);
+        ActivityCompat.requestPermissions(MainActivity.this , new String[] {Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_CONTACTS}, 121);
 
         mic = findViewById(R.id.imageView);
         userTextTV = findViewById(R.id.textView);
@@ -90,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if(result.getResult().getAction().equals("app_launch")){
                         LaunchingSystem ls = new LaunchingSystem(getApplicationContext(),tts);
                         ls.initialteLaunchingProcess(result.getResult());
+
+                } else if(result.getResult().getAction().equals("maka_call")){
+                    Call call = new Call(getApplicationContext(), tts);
+                    call.initiateCallProcess(result.getResult());
 
                 }
             }
