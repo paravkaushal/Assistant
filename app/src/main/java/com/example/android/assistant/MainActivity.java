@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     Call call = new Call(getApplicationContext(), tts);
                     call.initiateCallProcess(result.getResult());
 
+                } else if (result.getResult().getAction().equals("send_sms")) {
+                    Sms sms = new Sms(getApplicationContext(), tts);
+                    sms.initiateSmsProcess(result.getResult());
                 }
             }
 
